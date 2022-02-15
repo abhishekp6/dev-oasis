@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const logger = require('./middleware/logger');
+const dbConnection = require('./config/db');
 
 const bootcamp = require('./routes/bootcamp');
 
@@ -9,7 +10,10 @@ dotenv.config({path: './config/config.env'});
 
 const app = express();
 
+// Connect to Mongo DB Atlas
+dbConnection();
 
+// Log requests
 app.use(logger);
 
 // Mount Router
