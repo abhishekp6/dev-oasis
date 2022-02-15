@@ -6,8 +6,11 @@ router.route('/')
     .get(getBootcamp);
 router.route('/:id')
     .get(getSingleBootcamp)
-    .delete(deleteBootcamp)
-    .post(createBootcamp)
+    .delete(deleteBootcamp);
+router.route('/create')
+    .post(createBootcamp);
+router.route('/update')
     .patch(updateBootcamp);
+
 
 module.exports = router;

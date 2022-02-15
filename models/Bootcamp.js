@@ -12,7 +12,9 @@ const BootcampSchema = new mongoose.Schema({
     slug: String,
     website: {
         type: String,
-        match: ['https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)', 'Regex did not match']
+        match: [
+            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/, 'Regex did not match'
+        ]
     },
     email: {
         type: String,
@@ -26,11 +28,11 @@ const BootcampSchema = new mongoose.Schema({
         type: {
           type: String,
           enum: ['Point'], 
-          required: true
+          required: false
         },
         coordinates: {
           type: [Number],
-          required: true
+          required: false
         },
         formattedAddress: String,
         street: String,
@@ -47,7 +49,7 @@ const BootcampSchema = new mongoose.Schema({
               'Mobile Development',
               'UI/UX',
               'Data Science',
-              'Buissness',
+              'Business',
               'Others'
           ]
       },
