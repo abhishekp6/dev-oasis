@@ -5,15 +5,31 @@ const bootcamp = require('../models/Bootcamp');
 // @method GET
 // @route /api/v1/bootcamp
 
-exports.getBootcamp = (req, res, next) => {
-    res.send("Get All");
+exports.getBootcamp = async (req, res, next) => {
+    try {
+        const bootcampData = await bootcamp.find();
+        if(!bootcampData){
+            return res.status(400).json({"Status":"Fail", "data":"Data Does not exists"});
+        }
+        res.status(200).json({"Status":"Success", "data": bootcampData});
+    } catch (error) {
+        res.status(500).json({"Status":"Fail", "Error":error});
+    }
 }
 
 // @desc return single bootcamps
 // @method GET
 // @route /api/v1/bootcamp/:id
-exports.getSingleBootcamp = (req, res, next) => {
-    res.send("Get Single");
+exports.getSingleBootcamp = async (req, res, next) => {
+    try {
+        const bootcampData = await bootcamp.findById(req.params.id);
+        if(!bootcampData){
+            return res.status(400).json({"Status":"Fail", "data":"Data Does not exists"});
+        }
+        res.status(200).json({"Status":"Success", "data": bootcampData});
+    } catch (error) {
+        res.status(500).json({"Status":"Fail", "Error":error});
+    }
 }
 
 // @desc create bootcamp
