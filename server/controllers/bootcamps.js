@@ -50,8 +50,27 @@ exports.createBootcamp = async (req, res, next) => {
 // @desc update bootcamp
 // @method PATCH
 // @route /api/v1/bootcamp/update
-exports.updateBootcamp = (req, res, next) => {
-    res.send("Update");
+exports.updateBootcamp = async (req, res, next) => {
+    try {
+        const bootcampData = await bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        })
+        if(!bootcampData){
+            res.status(400).json({
+                "status": "Fail",
+                "data": bootcampData
+            }); 
+        }
+        
+        res.status(201).json({
+            "status": "Success",
+            "data": bootcampData
+        });   
+        
+    } catch (error) {
+        res.status(500).json({"status": "Internal Server Error", "Error": error});
+    }
 }
 
 // @desc delete single bootcamp
