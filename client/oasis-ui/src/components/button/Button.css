@@ -1,0 +1,16 @@
+.button{
+    width: 35%;
+    height: 4vh;
+    font-size: 1rem;
+    color: blue;
+    background: white;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.button:hover{
+    background-color: whitesmoke;
+}
