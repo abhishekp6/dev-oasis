@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+.card{
+    height: 200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.courseImage{
+    height: 180px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.courseContent{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.mediumFont{
+    font-size: 0.9rem;
+}
+
+.smallFont{
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.cardFooter{
+    margin-right: 0.5rem;
+}
+
+.footerContent{
+    display: grid;
+    grid-template-columns: 6% 12% 9%;
+}
+
+.price{
+    margin-top: 25px;
+    position: relative;
+    right: 10%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
