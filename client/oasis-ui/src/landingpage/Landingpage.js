@@ -4,6 +4,7 @@ import './Landingpage.css';
 import Banner from "./banner/Banner";
 import CourseList from "./courseList/CourseList";
 import data from "../dummyData";
+import CourseDetail from "./courseDetail/CourseDetail";
 
 const Landingpage = () => {
 
@@ -16,12 +17,11 @@ const Landingpage = () => {
             <div className="top">
                 <Navbar />
             </div>
-            <div className="mid">
+            {/* <div className="mid">
                 <Banner />
             </div>
-            <div>
-                {courseListArr}
-            </div>
+            {courseListArr} */}
+            <CourseDetail />
         </div>
     );
 }
