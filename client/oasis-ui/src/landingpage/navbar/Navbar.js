@@ -1,9 +1,11 @@
 import React, { useState }  from "react";
 import './Navbar.css';
 import Button from "../../components/button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
+    let navigate = useNavigate();
     // Hook to trck search input
     const [searchTerm, setSearchTerm]=useState("");
     
@@ -14,11 +16,15 @@ const Navbar = () => {
         event.preventDefault();
         console.log(searchTerm);
         setSearchTerm("");
+        navigate("search");
+    }
+    const onMainIconClick = () => {
+        navigate("/");
     }
     return (
         <div className="navbar">
             <div>
-                <label className="mainIcon">Dev Oasis</label>
+                <label className="mainIcon" onClick={onMainIconClick}>Dev Oasis</label>
             </div>
             <div>
                 <form onSubmit={onInputSubmit}>

@@ -1,12 +1,15 @@
 import React from "react";
 import './CourseList.css';
+import { Link } from "react-router-dom";
 
 const CourseList = (props) => {
     console.log(props.course)
     return(
         <div className="card">
             <div>
-                <img src={props.course.thumbnail} className="courseImage"/>
+                <Link to="course">
+                    <img src={props.course.thumbnail} className="courseImage"/>
+                </Link>
             </div>
             <div className="courseContent">
                 <h3>{props.course.courseTitle}</h3>

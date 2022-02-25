@@ -2,26 +2,22 @@ import React  from "react";
 import Navbar from "./navbar/Navbar";
 import './Landingpage.css';
 import Banner from "./banner/Banner";
-import CourseList from "./courseList/CourseList";
-import data from "../dummyData";
 import CourseDetail from "./courseDetail/CourseDetail";
+import Search from "./search/Search";
+import { Routes, Route } from 'react-router-dom';
 
 const Landingpage = () => {
 
-    const courseListArr = data.map((element) => {
-        return <CourseList key={element.courseID} course={element}/>
-    })
-    console.log(courseListArr)
     return (
         <div>
             <div className="top">
                 <Navbar />
             </div>
-            {/* <div className="mid">
-                <Banner />
-            </div>
-            {courseListArr} */}
-            <CourseDetail />
+            <Routes>
+                <Route path="/" element={<Banner />} />
+                <Route path="search" element={<Search />} />
+                <Route path = "search/course" element={<CourseDetail />} />
+            </Routes>
         </div>
     );
 }

@@ -8,6 +8,10 @@
     padding-top: 25px;
 }
 
+.mainIcon:hover{
+    cursor: pointer;
+}
+
 .navbar{
     padding-top: 2rem;
     display: grid;
