@@ -17,6 +17,24 @@ exports.getBootcamp = async (req, res, next) => {
     }
 }
 
+// @desc return all bootcamps that contains search term
+// @method GET
+// @route /api/v1/bootcamp
+
+exports.searchBootcamp = async (req, res, next) => {
+    try {
+        const queryParam = req.params.searchTerm;
+        const regex = new RegExp(queryParam, 'i') // i for case insensitive
+        const bootcampData = await bootcamp.find({courseTitle: {$regex: regex}},{courseTitle: 1});
+        if(!bootcampData){
+            return res.status(400).json({"Status":"Fail", "data":"Data Does not exists"});
+        }
+        res.status(200).json({"Status":"Success", "data": bootcampData});
+    } catch (error) {
+        res.status(500).json({"Status":"Fail", "Error":error});
+    }
+}
+
 // @desc return single bootcamps
 // @method GET
 // @route /api/v1/bootcamp/:id

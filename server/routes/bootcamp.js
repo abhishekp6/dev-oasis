@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getBootcamp, getSingleBootcamp, deleteBootcamp, createBootcamp, updateBootcamp } = require('../controllers/bootcamps');
+const { getBootcamp, getSingleBootcamp, deleteBootcamp, createBootcamp, updateBootcamp, searchBootcamp } = require('../controllers/bootcamps');
 
 router.route('/')
     .get(getBootcamp);
+router.route('/search/:searchTerm')
+    .get(searchBootcamp);
 router.route('/:id')
     .get(getSingleBootcamp)
     .delete(deleteBootcamp);

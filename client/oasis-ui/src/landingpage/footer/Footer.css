@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+.footer{
+    width: 99%;
+    background-color: #1c1d1f;
+    border-radius: 2px;
+    height: 180px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.mainIconFooter{
+    font-size: 2rem;
+    text-align: left;
+    color: white;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 10%;
+    padding-top: 25px;
+}
+
+.links{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 57%;
+    position: relative;
+    left: 10%;
+    margin-top: 10px;
+}
+
+.endCredits{
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+.singleLink{
+    margin-top: 5px;
+}

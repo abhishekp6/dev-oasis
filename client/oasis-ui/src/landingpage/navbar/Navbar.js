@@ -10,21 +10,27 @@ const Navbar = () => {
     let navigate = useNavigate();
     // Hook to trck search input
     const [searchTerm, setSearchTerm]=useState("");
-    const [searchResult, setsearchResult]=useState([]);
+    const [searchResult, setSearchResult]=useState([]);
+    const [searchList, setSearchList]=useState([]);
+
 
     const getResponse = async () => {
-        const { data } = await axios.get('http://localhost:5000/api/v1/bootcamps');
-        setsearchResult(data.data);
+        const { data } = await axios.get(`http://localhost:5000/api/v1/bootcamps/search/${searchTerm}`);
+        setSearchResult(data.data);
+        setSearchList(searchListArr);
     }
 
     useEffect( () => {
         if(searchTerm){
             getResponse();
         }
+        else{
+            setSearchList([]);
+        }
         console.log(searchResult, "Search Result");
     }, [searchTerm]);
     
-    const searchList = searchResult.map(element => {
+    let searchListArr = searchResult.map(element => {
             return (
                 <div className="resultItem" onClick={getResponse}>{element.courseTitle}</div>
             );
