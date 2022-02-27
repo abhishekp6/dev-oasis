@@ -2,7 +2,7 @@
 
 .banner{
     width: 100%;
-    height: 60vh;
+    height: 600px;
     background-color: ghostwhite;
     margin-top: 5px;
     border-radius: 5px;
@@ -27,7 +27,12 @@
 .cardClass{
     margin: 0 auto;
     width: 75%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+}
+
+.carouselClass{
+    margin-top: 30px;
+}
+
+.carousel.carousel-slider .control-arrow{
+    background: #2196f3 !important;
 }

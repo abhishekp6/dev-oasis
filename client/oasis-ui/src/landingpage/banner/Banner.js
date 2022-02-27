@@ -45,15 +45,17 @@ const Banner = () => {
                     <img src="/dev.jpg" className="image"/>
                 </div>
             </div>
-            <div className="cardClass">
-                <Carousel swipeable={true} showArrows={true}>
-                    {courseCarousel}
-                </Carousel>
-            </div>
-            <div className="cardClass">
-                <Carousel>
-                    {courseCarousel}
-                </Carousel>
+            <div className="carouselClass">
+                <div className="cardClass">
+                    <Carousel swipeable={true} showArrows={true} autoPlay={true} emulateTouch={true} infiniteLoop={true}>
+                        {courseCarousel}
+                    </Carousel>
+                </div>
+                <div className="cardClass">
+                    <Carousel swipeable={true} showArrows={true} autoPlay={true} emulateTouch={true} infiniteLoop={true}>
+                        {courseCarousel}
+                    </Carousel>
+                </div>
             </div>
         </div>
     );
