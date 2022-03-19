@@ -10,6 +10,10 @@
     margin-top: 5px;
 }
 
+.card:hover{
+    cursor: pointer;
+}
+
 .courseImage{
     height: 180px;
     width: 80%;

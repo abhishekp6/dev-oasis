@@ -15,7 +15,7 @@ const Banner = () => {
     const navigate = useNavigate();
     const courseCarousel = data.map((element) => {
         return(
-            <div key={data.courseId}>
+            <div key={element.courseID}>
                 <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                         component="img"

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const CourseDetail = (props) => {
     
     const courseIncludes = props?.currentCourse?.courseIncludes.map((element) => {
-        return <li key={element.courseID}>{element}</li>;
+        return <li key={element._id}>{element}</li>;
     })
     return(
         <div>

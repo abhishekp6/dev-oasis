@@ -1,15 +1,23 @@
 import React from "react";
 import './CourseList.css';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { connect } from 'react-redux';
+import { selectCourse } from "../../actions";
 
 const CourseList = (props) => {
-    console.log(props.course)
+
+    // Initialisations
+    let navigate = useNavigate();
+
+    //Event Handler Functions
+    const navigateToCourseDetails = () => {
+        props.selectCourse(props.course);
+        navigate("/search/course")
+    }
     return(
-        <div className="card">
+        <div className="card" onClick={navigateToCourseDetails}>
             <div>
-                <Link to="course">
-                    <img src={props.course.thumbnail} className="courseImage"/>
-                </Link>
+                <img src={props.course.thumbnail} className="courseImage"/>
             </div>
             <div className="courseContent">
                 <h3>{props.course.courseTitle}</h3>
@@ -29,4 +37,10 @@ const CourseList = (props) => {
     );
 }
 
-export default CourseList;
+const mapStateToProps = (state) => {
+    return {
+        state: state
+    }
+}
+
+export default connect(mapStateToProps, {selectCourse})(CourseList);
