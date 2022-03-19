@@ -2,9 +2,11 @@ import React from "react";
 import './CourseDetail.css';
 import data from "../../dummyData";
 import Button from "../../components/button/Button";
+import { connect } from 'react-redux';
 
-const CourseDetail = () => {
-    const courseIncludes = data[0].courseIncludes.map((element) => {
+const CourseDetail = (props) => {
+    
+    const courseIncludes = props?.currentCourse?.courseIncludes.map((element) => {
         return <li key={element.courseID}>{element}</li>;
     })
     return(
@@ -13,28 +15,28 @@ const CourseDetail = () => {
                 <div className="courseDetail">
                     <div className="courseDetails">
                         <div className="courseTitle">
-                            {data[0].courseTitle}
+                            {props?.currentCourse?.courseTitle}
                         </div>
                         <div className="courseDesc">
-                            {data[0].courseDesc}
+                            {props?.currentCourse?.courseDesc}
                         </div>
                         <div className="courseStats">
-                            <span className="microCourseStats">{data[0].rating}</span>
-                            <span className="microCourseStats">{data[0].studentsEnrolled} Students</span>
+                            <span className="microCourseStats">{props?.currentCourse?.rating}</span>
+                            <span className="microCourseStats">{props?.currentCourse?.studentsEnrolled} Students</span>
                             <br/>
-                            <span className="microCourseStats">Created By: {data[0].instructor}</span>
+                            <span className="microCourseStats">Created By: {props?.currentCourse?.instructor}</span>
                             <br/>
-                            <span className="microCourseStats">Last Updated at: {data[0].lastUpdate}</span>
-                            <span className="microCourseStats">Language: {data[0].language}</span>
+                            <span className="microCourseStats">Last Updated at: {props?.currentCourse?.lastUpdate}</span>
+                            <span className="microCourseStats">Language: {props?.currentCourse?.language}</span>
                         </div>
                     </div>
                     <div>
                         <div className="courseCard">
                             <div>
-                                <img src={data[0].thumbnail} className="courseMedia"/>
+                                <img src={props?.currentCourse?.thumbnail} className="courseMedia"/>
                             </div>
                             <div>
-                                <span className="largeFont price">{data[0].price}</span>
+                                <span className="largeFont price">{props?.currentCourse?.price}</span>
                                 <div>
                                     {/* <div className="buttonDiv">
                                         <Button text="Buy" />
@@ -61,4 +63,10 @@ const CourseDetail = () => {
     );
 }
 
-export default CourseDetail;
+const mapStateToProps = (state) => {
+    return {
+        currentCourse: state.currentCourse
+    }
+}
+
+export default connect(mapStateToProps)(CourseDetail);

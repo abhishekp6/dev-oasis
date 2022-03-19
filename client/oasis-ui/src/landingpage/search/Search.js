@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsSearch } from 'react-icons/bs';
 import axios from 'axios';
-import CourseDetail from "../courseDetail/CourseDetail";
 import './Search.css';
+import { selectCourse } from "../../actions";
+import { connect } from 'react-redux';
 
-const Search = () => {
+const Search = (props) => {
 
     /*****************Initialisations*******************/
 
@@ -45,9 +46,8 @@ const Search = () => {
     //called once on initialisation
     useEffect( () => {
         window.addEventListener('click', (event) =>{
-            console.log(event.target, "Clicked!!!!!");
             if(!ref.current.contains(event.target)){
-                //hide searchlist
+                //Hide searchlist
                 setShowSearchResult(false);
             }
             else{
@@ -80,7 +80,13 @@ const Search = () => {
     }
 
     const openCourseDetail = (element) => {
+
+        //Call action reducer with action creator and set new state
+        //Then reroute to course Detail
+        props.selectCourse(element);
+        setSearchTerm("");
         navigate("/search/course")
+        
     } 
 
     const navigateToSearch = () => {
@@ -102,4 +108,11 @@ const Search = () => {
     );
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {selectedCourse : state.currentCourse};
+}
+
+export default connect(mapStateToProps, {
+    selectCourse
+})(Search);
