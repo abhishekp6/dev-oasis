@@ -3,7 +3,7 @@ import Navbar from "./navbar/Navbar";
 import './Landingpage.css';
 import Banner from "./banner/Banner";
 import CourseDetail from "./courseDetail/CourseDetail";
-import Search from "./search/Search";
+import SearchPage from "./search/SearchPage";
 import { Routes, Route } from 'react-router-dom';
 import Footer from './footer/Footer';
 
@@ -16,7 +16,7 @@ const Landingpage = () => {
             </div>
             <Routes>
                 <Route path="/" element={<Banner />} />
-                <Route path="search" element={<Search />} />
+                <Route path="search" element={<SearchPage />} />
                 <Route path = "search/course" element={<CourseDetail />} />
             </Routes>
             <div>

@@ -25,7 +25,7 @@ exports.searchBootcamp = async (req, res, next) => {
     try {
         const queryParam = req.params.searchTerm;
         const regex = new RegExp(queryParam, 'i') // i for case insensitive
-        const bootcampData = await bootcamp.find({courseTitle: {$regex: regex}},{courseTitle: 1});
+        const bootcampData = await bootcamp.find({courseTitle: {$regex: regex}});
         if(!bootcampData){
             return res.status(400).json({"Status":"Fail", "data":"Data Does not exists"});
         }
