@@ -1,0 +1,27 @@
+.authButton{
+    width: 30%;
+    height: 40px;
+    text-align: center;
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    font-size: .95rem;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.authButton:hover{
+    cursor: pointer;
+}
+
+.c1{
+    height: 40px;
+    margin-top: 8px;
+    font-size: x-large;
+}
+
+.c2{
+    height: 40px;
+    margin-top: 11px;
+    font-size: medium;
+}

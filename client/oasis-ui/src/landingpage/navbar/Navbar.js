@@ -1,7 +1,7 @@
 import './Navbar.css';
-import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
 import Search from '../search/Search';
+import Login from '../../authentication/Login';
 
 const Navbar = () => {
 
@@ -21,8 +21,7 @@ const Navbar = () => {
                 <Search />
             </div>
             <div>
-                <Button text="Login"/>
-                <Button text="SignUp"/>
+                <Login />
             </div>
         </div>
     );
