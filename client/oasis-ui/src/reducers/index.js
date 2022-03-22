@@ -7,6 +7,17 @@ const selectCourseReducer = (selectCourse = null, action) => {
     return selectCourse;
 }
 
+const authReducer = (defaultLogin = null, action) => {
+    if(action.type === 'SIGN_IN'){
+        return true;
+    }
+    else if(action.type === 'SIGN_OUT'){
+        return false;
+    }
+    return defaultLogin;
+}
+
 export default combineReducers({
-    currentCourse: selectCourseReducer
+    currentCourse: selectCourseReducer,
+    isSignedIn: authReducer
 })

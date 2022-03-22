@@ -109,7 +109,6 @@ const Search = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {selectedCourse : state.currentCourse};
 }
 

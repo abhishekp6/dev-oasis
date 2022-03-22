@@ -4,43 +4,49 @@ import React from "react";
 import { FcGoogle } from 'react-icons/fc';
 import './Login.css';
 import configObj from "./Api-creds";
+import { connect } from 'react-redux';
+import { signIn, signOut } from '../actions/index'
 
 class Login extends React.Component{
 
     state = {
-        isSignedIn: null,
         buttonText: 'SignIn'
     };
 
     componentDidMount(){
-        window.gapi.load('client:auth2', () => {
-            window.gapi.client.init({
-                clientId: configObj.CLIENT_ID,
-                scope: "email"
-            }).then(() => {
-                this.auth = window.gapi.auth2.getAuthInstance();
-                this.updateSignInStatus();
-                this.auth.isSignedIn.listen(this.updateSignInStatus)
-            });
-        });
+        try {
+            window.gapi.load('client:auth2', () => {
+                window.gapi.client.init({
+                    clientId: configObj.CLIENT_ID,
+                    scope: "email"
+                }).then(() => {
+                    this.auth = window.gapi.auth2.getAuthInstance();
+                    this.updateSignInStatus();
+                    this.auth.isSignedIn.listen(this.updateSignInStatus)
+                });
+            });   
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     updateSignInStatus = () => {
-        this.setState({ isSignedIn: this.auth.isSignedIn.get() })
-        let authText = this.state.isSignedIn === true ? 'Signout' : 'SignIn';
+        let authText = this.props.isSignedIn === true ? 'Signout' : 'SignIn';
         this.setState({ buttonText: authText });
     }
 
     onSignInClick = () => {
         this.auth.signIn();
+        this.props.signIn();
     }
 
     onSignOutClick = () => {
         this.auth.signOut();
+        this.props.signOut();
     }
 
     onAuthButtonClick = () => {
-        if(this.state.isSignedIn === true){
+        if(this.props.isSignedIn === true){
             this.onSignOutClick();
         }
         else{
@@ -60,4 +66,8 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {isSignedIn: state.isSignedIn};
+}
+
+export default connect(mapStateToProps, { signIn, signOut })(Login);
