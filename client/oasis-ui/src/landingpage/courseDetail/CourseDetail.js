@@ -1,7 +1,6 @@
 import React from "react";
 import './CourseDetail.css';
-import data from "../../dummyData";
-import Button from "../../components/button/Button";
+
 import { connect } from 'react-redux';
 
 const CourseDetail = (props) => {
@@ -33,7 +32,7 @@ const CourseDetail = (props) => {
                     <div>
                         <div className="courseCard">
                             <div>
-                                <img src={props?.currentCourse?.thumbnail} className="courseMedia"/>
+                                <img alt="img" src={props?.currentCourse?.thumbnail} className="courseMedia"/>
                             </div>
                             <div>
                                 <span className="largeFont price">{props?.currentCourse?.price}</span>
